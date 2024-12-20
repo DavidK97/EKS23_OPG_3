@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+!pragma layout smetana
+
+class Main {
++ static void main (String[] args)
+}
+
+class Academy {
+- Set <Course> allCourses
+- List <Student> allStudents
+
++ printDiploma (Student student)
++ List <Student> getHighest (int amount)
++ List <Student> getLowest (int amount)
++ float calculateAverage (List <Student> allStudents)
+
+}
+
+class Student {
+- {static} int studentId
+- String name
+- int age
+- int schoolYear
+- HashMap <Course, Integer> coursesTaken
+
+}
+
+class Course {
+- String name
+}
+
+Main *-- Academy
+Academy *-- Student
+Academy *-- Course
+Student *-- Course
+
+
+
+@enduml
