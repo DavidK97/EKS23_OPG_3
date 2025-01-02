@@ -1,24 +1,29 @@
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Student {
     private static int studentId = 0;
     private String name;
     private int age;
     private int schoolYear;
-    private HashMap <Course, Integer> coursesCompleted;
+    private Set <Course> coursesCompleted;
 
     public Student (String name, int age, int schoolYear){
         this.name = name;
         this.age = age;
         this.schoolYear = schoolYear;
-        this.coursesCompleted = new HashMap <Course, Integer> ();
+        this.coursesCompleted = new HashSet<>();
         studentId++;
     }
 
-    //TODO sørg for at de kun er karaktere ma kan indtaste
-    public void addCourse (Course course, Integer grade) {
-        coursesCompleted.put(course, grade);
+
+    public void addCourse (Course course, int grade) {
+        if (grade == -3 || grade == 00 || grade == 02 || grade == 4 || grade == 7 || grade == 10 || grade == 12) {
+            course.setGrade(grade);
+            coursesCompleted.add(course);
+        }
     }
+
 
     //TODO skal fikses så courses navn er med
     public String toString (){
@@ -42,7 +47,9 @@ public class Student {
         return studentId;
     }
 
-    public HashMap <Course, Integer> getCoursesCompleted () {
+    public Set<Course> getCoursesCompleted () {
         return coursesCompleted;
     }
+
+
 }

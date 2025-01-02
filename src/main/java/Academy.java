@@ -12,27 +12,45 @@ public class Academy {
         this.allStudents = new ArrayList<>();
     }
 
-    //TODO toString () skal fikses så navn på courses printes
+
     public void printDiploma (Student student) {
-        System.out.println(student.getCoursesCompleted());
-        calculateAverage(student);
+        System.out.println(student.getName());
+        for (Course course: student.getCoursesCompleted()) {
+            System.out.println(course);
+        }
+        System.out.println("Gennemsnit: " + calculateAverage(student));
     }
 
+    //TODO
     public List<Student> getHighest (int amount){
         return null;
     }
 
+    //TODO
     public List <Student> getLowest (int amount){
         return null;
     }
 
-    //TODO skal have 'value' fra en students coursesCompleted
-    //TODO brug for en list måske?
+
     public float calculateAverage (Student student) {
-        int average = 0;
-        student.getCoursesCompleted().forEach();
-        return average;
+        float total = 0;
+       for (Course course : student.getCoursesCompleted()) {
+           total = total + course.getGrade();
+       }
+        return total/student.getCoursesCompleted().size();
     }
+
+
+    public void addStudent (Student student) {
+        allStudents.add(student);
+    }
+
+    public void addCourse (Course course) {
+        allCourses.add(course);
+    }
+
+
+
 
 
 
